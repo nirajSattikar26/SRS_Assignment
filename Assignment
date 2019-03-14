@@ -1,0 +1,43 @@
+/*
+ @Author
+ Niraj Sattikar
+ */
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class Assignment {
+	public static void main(String[] args) {
+	
+		//Please provide Input file name and directory
+		File inputFile = new File("C:/Git/Input file.csv");
+		BufferedReader br;
+		try {
+			String inputString;
+			br = new BufferedReader(new FileReader(inputFile));
+			while ((inputString = br.readLine()) != null) {
+				writeToFile(inputString);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+		
+	
+	private static synchronized void writeToFile(String str) {
+		try {
+			//Please provide output file name and directory
+			BufferedWriter writer = new BufferedWriter(new FileWriter("C:/Git/output.csv", true));
+			writer.append(str + "\n");
+			writer.close();
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+}
